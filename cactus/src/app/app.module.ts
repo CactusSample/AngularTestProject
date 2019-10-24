@@ -3,12 +3,18 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from '../components/dashboard/dashboard.component';
+import { HeaderComponent } from '../components/header/header.component';
+import { LeftmenuComponent } from '../components/leftmenu/leftmenu.component';
+import { BasicUserDetailsComponent } from '../components/basic-user-details/basic-user-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    DashboardComponent,
+    HeaderComponent,
+    LeftmenuComponent,
+    BasicUserDetailsComponent
   ],
   imports: [
     BrowserModule,
