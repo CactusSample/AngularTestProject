@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store, select } from '@ngrx/store';
+import { ProductDetails } from '../../models/product-details'
 
 @Component({
   selector: 'app-dashboard',
@@ -8,12 +10,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   private activeTab: number;
+  cart : ProductDetails[] = [];
 
-  constructor(private route: ActivatedRoute) {
-    this.route.params.subscribe((params) => {
-      console.log(params);
-      this.activeTab = params.id;
-    });
+  constructor(private store: Store<{ items: []; cart: [] }>) { 
+    store.pipe(select('product')).subscribe(data => (this.cart = data.cart));
   }
 
   ngOnInit() {
