@@ -1,14 +1,3 @@
-<header>
-    <div class="brand">
-      <h5>The Store</h5>
-    </div>
-    <div class="nav">
-      <ul>
-        <li>
-          <img  src="../../assets/images/shopping-bag.png" alt="cart" />
-          <span class="badge" ></span>   
-          <!-- *ngIf="cart.length > 0">{{ cart.length }} -->
-        </li>
-      </ul>
-    </div>
-</header>
+<app-header></app-header>
+<app-product-list [products]="products"></app-product-list>
+

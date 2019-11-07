@@ -11,9 +11,12 @@ import { ProductDetails } from '../../models/product-details'
 export class DashboardComponent implements OnInit {
   private activeTab: number;
   cart : ProductDetails[] = [];
+  products: any;
 
   constructor(private store: Store<{ items: []; cart: [] }>) { 
-    store.pipe(select('product')).subscribe(data => (this.cart = data.cart));
+    store.pipe(select('product')).subscribe((data) => {
+      this.products = data.items;
+    });
   }
 
   ngOnInit() {
