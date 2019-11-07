@@ -11,6 +11,7 @@ import { StoreModule } from '@ngrx/store';
 import { ProductsComponent } from '../components/products/products.component';
 import { ProductListComponent } from '../components/product-list/product-list.component'
 import { ProductAddRemoveReducer } from 'src/store/reducer/product-add-remove-reducer';
+import { CartDetailsComponent } from 'src/components/cart-details/cart-details.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ProductAddRemoveReducer } from 'src/store/reducer/product-add-remove-re
     HeaderComponent,
     LoginComponent,
     ProductsComponent,
-    ProductListComponent
+    ProductListComponent,
+    CartDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,7 @@ import { ProductAddRemoveReducer } from 'src/store/reducer/product-add-remove-re
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot({
-      product: ProductAddRemoveReducer
+      product: ProductAddRemoveReducer,
     })
   ],
   providers: [],

@@ -32,12 +32,6 @@
           "price": 10.33,
           "image": "/assets/images/apple-item.png",
           "description": "Sliced and served with your salad. Served as snacks midway through the day"
-        },
-        {
-          "name": "Sharifa",
-          "price": 10.33,
-          "image": "/assets/images/unknown.jpeg",
-          "description": "A great fruit, also known as custard apple"
         }
       ],
       cart: []
@@ -52,9 +46,35 @@
           };
     
         case ProductActionTypes.Add:
+          let cart = {
+            product: {},
+            qty: 0
+          }
+          console.log('containsObject', containsObject(action.payload, state.cart))
+          if (containsObject(action.payload, state.cart).length > 0) {
+            console.log('exist')
+            let oldQty;
+            oldQty = state.cart.filter((item) => {
+              return item.product.name === action.payload.name
+            })[0].qty;
+
+            cart = state.cart.filter((item) => {
+              return item.product.name === action.payload.name
+            })[0];
+            cart.qty = oldQty + 1;
+
+          } else {
+            console.log('not exist')
+            cart = {
+              product: action.payload,
+              qty: 0
+            }
+          }
           return {
             ...state,
-            cart: [...state.cart, action.payload]
+            cart: [{
+              ...cart
+            }]
           };
     
         case ProductActionTypes.Remove:
@@ -67,3 +87,9 @@
           return state;
       }
     }
+
+    function containsObject(obj, list) {
+     return list.filter((item) => {
+       return item.product.name === obj.name
+     })
+  }
