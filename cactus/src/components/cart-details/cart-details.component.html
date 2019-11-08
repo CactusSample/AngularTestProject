@@ -3,8 +3,17 @@
     <br>
 </div>
 <div class="align-items-center">
-<app-products *ngFor="let product of cartDetails" [product]="product.product" [qty]="product.qty"></app-products>
+    <app-products *ngFor="let product of cartDetails" [product]="product.product" [qty]="product.qty"></app-products>
 </div>
-<div class="row justify-content-center align-items-center">
+<div class="row justify-content-center align-items-center" *ngIf="hideRestData">
     Total ammount to be paid = {{totalPrice}}
+</div>
+<div class="row justify-content-center align-items-center" *ngIf="hideRestData">
+    <input type="button" class="btn btn-primary" value="Place order" (click)="showModalConfirmation()">
+</div>
+
+<div class="row justify-content-center align-items-center">
+    <div class="alert alert-primary " role="alert" *ngIf="showSuccessMessage">
+        Thank you for placing order
+    </div>
 </div>

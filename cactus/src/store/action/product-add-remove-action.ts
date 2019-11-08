@@ -5,7 +5,8 @@ export enum ProductActionTypes{
     Add = '[ProductDetails] Add to cart',
     Remove = '[ProductDetails] Remove from cart',
     LoadItems = '[Products] Load items from server',
-    LoadSuccess = '[Products] Load success'
+    LoadSuccess = '[Products] Load success',
+    ClearCart = '[ProductDetails] clear cart data'
 }
 
 export class AddToCart implements Action {
@@ -29,5 +30,9 @@ export class AddToCart implements Action {
   
     constructor(public payload: ProductDetails[]) {}
   }
+  export class ClearCart implements Action {
+    readonly type = ProductActionTypes.ClearCart;
+    
+  }
   
-  export type ActionsUnion = AddToCart | RemoveFromCart | LoadItems | GetItems;
+  export type ActionsUnion = AddToCart | RemoveFromCart | LoadItems | GetItems | ClearCart;

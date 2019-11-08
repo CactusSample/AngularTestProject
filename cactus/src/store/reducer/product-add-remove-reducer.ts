@@ -76,6 +76,12 @@ export function ProductAddRemoveReducer(state = initialState, action: ActionsUni
                 cart: [...state.cart.filter(item => item.name !== action.payload.name)]
             };
 
+            case ProductActionTypes.ClearCart:
+                return{
+                    ...state,
+                    cart :[]
+                }
+
         default:
             return state;
     }

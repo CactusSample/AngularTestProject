@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-
+import { ProductDetails } from 'src/models/product-details';
+import { ClearCart } from 'src/store/action/product-add-remove-action';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-cart-details',
@@ -10,7 +12,10 @@ import { Store, select } from '@ngrx/store';
 export class CartDetailsComponent implements OnInit {
   cartDetails: any;
   totalPrice = 0;
-  constructor(private store: Store<{ items: []; cart: [] }>) { }
+  showSuccessMessage: boolean = false;
+  hideRestData: boolean = true;
+  
+  constructor(private store: Store<{ items: []; cart: [] }>, private router: Router) { }
 
   ngOnInit() {
     this.store.pipe(select('product')).subscribe((data) => {
@@ -21,13 +26,24 @@ export class CartDetailsComponent implements OnInit {
   }
 
   calculateTotal(data: any){
-   
-    console.log('calculate total',data);
-   
     data.forEach((item) => {
       this.totalPrice = this.totalPrice + item.qty * item.product.price;
     });
     console.log('totalPrice', this.totalPrice)
   }
 
+  showModalConfirmation(){
+    this.showSuccessMessage = true;
+    this.hideRestData = false;
+    this.clearCart();
+  }
+
+  clearCart() {
+    this.store.dispatch(new ClearCart());
+    setTimeout(() => {
+      this.router.navigate(["dashboard"]);
+
+    }, 3000)
+  }
+ 
 }
