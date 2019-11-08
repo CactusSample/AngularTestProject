@@ -1,4 +1,5 @@
-<div class="product">
+
+  <div class="product" [ngClass]="{'cart': qty}">
     <div class="product-image-holder">
       <img [src]="product.image" [alt]="product.name" class="product-image" />
     </div>
@@ -9,10 +10,8 @@
     <div class="product-description">
       <p>{{ product.description }}</p>
     </div>
-    <div *ngIf="qty">
-      Qty: {{qty}}
-    </div>
-    <div class="product-actions">
+
+    <div class="product-actions" *ngIf="!qty">
       <button class="product-actions__add" (click)="addToCart(product)">
         <img src="/assets/images/add-to-cart.png" alt="add to cart" />
       </button>
@@ -20,4 +19,8 @@
         <img src="/assets/images/remove-from-cart.png" alt="remove from cart" />
       </button-->
     </div>
+  
+  </div>
+  <div *ngIf="qty" class="cart-qty">
+    Qty: {{qty}}
   </div>

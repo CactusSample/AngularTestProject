@@ -1,1 +1,7 @@
+<app-header></app-header>
+<div class="align-items-center">
 <app-products *ngFor="let product of cartDetails" [product]="product.product" [qty]="product.qty"></app-products>
+</div>
+<div class="row justify-content-center align-items-center">
+    Total ammount to be paid = {{totalPrice}}
+</div>
