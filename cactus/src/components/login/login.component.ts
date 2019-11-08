@@ -3,6 +3,7 @@ import { Logindetails } from '../../models/logindetails';
 import { RestService } from '../../services/rest.service';
 import { Router } from "@angular/router";
 import { FormGroup, FormControl,FormBuilder, Validators} from '@angular/forms';
+import { AuthService } from '../../auth/auth.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,18 +17,20 @@ export class LoginComponent implements OnInit {
   isServerError: boolean;
   submitted = false;
   userDisplayName: '';
-  constructor(private formBuilder: FormBuilder,private restService: RestService,private router: Router) { }
-
+  constructor(private formBuilder: FormBuilder,private restService: RestService,private authService: AuthService,private router: Router) { 
+  }
+  
   ngOnInit() {
     this.loginForm= this.formBuilder.group({
-      Email:['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required,Validators.pattern('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$')]]
+      Username:['', [Validators.required]],
+      password: ['', [Validators.required,Validators.pattern('^(?=.*\d)(?=.*[a-z]).{6,}$')]]
     });
   }
 
   // convenience getter for easy access to form fields
   get f() { return this.loginForm.controls; }
 
+  
   onSubmit() 
   { 
    
@@ -39,15 +42,11 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.invalid){
       return;
     }
-    console.log('SUCCESS1!! :-)\n\n' + JSON.stringify(this.loginForm.value));
     if(this.loginForm.valid)
     {
     this.restService.postResource(this.loginForm.value).subscribe(
     (result)=>
     {
-      console.log("hello iam here",result);
-      console.log(result['reasonPhrase'])
-      console.log(result.statusCode);
       
       //Checking the status of the response from the server
 
@@ -57,8 +56,9 @@ export class LoginComponent implements OnInit {
         //Navigating to the Dashboard on successfull login
 
        else if(result.statusCode === 200){
-        //  this.router.navigateByUrl('dashboard');
-         this.userDisplayName = this.loginForm.value.username;
+        this.authService.sendToken('ILoveYou',this.loginForm.value.Username);
+         this.router.navigateByUrl('dashboard');
+         this.userDisplayName = this.loginForm.value.Username;
       }
       
     },

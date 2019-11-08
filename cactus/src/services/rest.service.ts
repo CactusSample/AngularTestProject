@@ -8,7 +8,7 @@ import { Logindetails } from '../models/logindetails'
 export class RestService {
     /** Convenient way to modify request made by the http service both before they are sent and after they return */
     private http: HttpClient;
-    private _nodeurl = 'https://192.168.120.89:5001/authenticateuser';
+    private _nodeurl = 'https://shoppingcartpocwithazure20191106104438.azurewebsites.net/V1/authuser';
     private jsonurl = '../assets/dummydata.json';
     // Creates an instance of RestService
     constructor(http: HttpClient) {

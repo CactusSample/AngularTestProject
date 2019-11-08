@@ -1,8 +1,4 @@
-export class Logindetails {
-    constructor(
-        public Email: string,
-        public password: string
-    ){
-
-    }
+export interface Logindetails {  
+    Username: string,
+    password: string
 }

@@ -1,35 +1,34 @@
 <div class="col-md-12">
-    <div class=" row pl-3 pt-5">
-            <img src="../../assets/images/sb.png" height="42" width="42">
-        <h1> &nbsp;Small Basket</h1>
-    </div>
-    <hr color="65666a" />
-        <div class="row">
-                <div class="col-md-3 mx-auto mt-5 p-5 login">
-                        <h3 class=" cactus text-center pb-4">Login</h3>
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
-                <div class="form-group" >
-                    <input class="form-control" type="email" formControlName="Email"
-                        placeholder="Email" [ngClass]="{ 'is-invalid': submitted && f.Email.errors }"/>
-                    <div *ngIf="submitted && f.Email.errors" class="invalid-feedback">
-                        <div *ngIf="f.Email.errors.required">Please enter Email</div>
-                        <div *ngIf="f.Email.errors.email">Email must be a valid email address</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="password" formControlName="password"
-                        placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
-                    <div *ngIf="submitted && f.password.errors " class="invalid-feedback">
-                        <div *ngIf="f.password.errors.required">Please enter Password</div>
-                        <div *ngIf="f.password.errors.pattern">Password must be 6 characters with atleast one number,small and capital letters</div>
-                    </div>
-                </div>
-                <button type="submit"  class="btn btn-success btn-block submit-button submit"> SIGN IN </button>
-            </form>
-            <!-- <p>Username: {{userDisplayName}}</p> -->
-            <p *ngIf="isInvalidCredential" style="color:red; text-align: center">Invalid Username or Password</p>
-            <p *ngIf="isServerError" style="color:red; text-align: center">Something went wrong,Please try again</p>
+        <div class=" row pl-3 pt-5">
+                <img src="../../assets/images/sb.png" height="42" width="42">
+            <h1> &nbsp;Small Basket</h1>
         </div>
+        <hr color="65666a" />
+            <div class="row">
+                    <div class="col-md-3 mx-auto mt-5 p-5 login">
+                            <h3 class=" cactus text-center pb-4">Login</h3>
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+                    <div class="form-group" >
+                        <input class="form-control" type="Username" formControlName="Username"
+                            placeholder="Username" [ngClass]="{ 'is-invalid': submitted && f.Username.errors }"/>
+                        <div *ngIf="submitted && f.Username.errors" class="invalid-feedback">
+                            <div *ngIf="f.Username.errors.required">Please enter Username</div>
+                            <!-- <div *ngIf="f.Username.errors.Username">Username must be a valid Username address</div> -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" type="password" formControlName="password"
+                            placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                        <div *ngIf="submitted && f.password.errors " class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Please enter Password</div>
+                            <div *ngIf="f.password.errors.pattern">Password must be 6 characters with atleast one number,small letter</div>
+                        </div>
+                    </div>
+                    <button type="submit"  class="btn btn-success btn-block submit-button submit"> SIGN IN </button>
+                </form>
+                <p *ngIf="isInvalidCredential" style="color:red; text-align: center">Invalid Username or Password</p>
+                <p *ngIf="isServerError" style="color:red; text-align: center">Something went wrong,Please try again</p>
+            </div>
+            
         
-    
-    </div>
+        </div>
