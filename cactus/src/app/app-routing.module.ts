@@ -18,7 +18,7 @@ const routes: Routes = [
     path: '', redirectTo:'login' ,pathMatch: 'full'
   },
   {
-    path:'cart', component: CartDetailsComponent
+    path:'cart', component: CartDetailsComponent,canActivate:[AuthGuard]
   }
 ];
 
