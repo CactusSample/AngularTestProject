@@ -32,6 +32,7 @@ import { CartDetailsComponent } from 'src/components/cart-details/cart-details.c
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     StoreModule.forRoot({
       product: ProductAddRemoveReducer,
     })
