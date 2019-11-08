@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private store: Store<{ items: []; cart: [] }>) { 
     store.pipe(select('product')).subscribe((data) => {
+      console.log(data)
       this.products = data.items;
     });
   }
