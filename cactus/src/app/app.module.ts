@@ -13,6 +13,7 @@ import { ProductListComponent } from '../components/product-list/product-list.co
 import { AuthService } from '../auth/auth.service';
 import { AuthGuard } from '../auth/auth.guard';
 import { ProductAddRemoveReducer } from 'src/store/reducer/product-add-remove-reducer';
+import { CartDetailsComponent } from 'src/components/cart-details/cart-details.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ProductAddRemoveReducer } from 'src/store/reducer/product-add-remove-re
     HeaderComponent,
     LoginComponent,
     ProductsComponent,
-    ProductListComponent
+    ProductListComponent,
+    CartDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +33,7 @@ import { ProductAddRemoveReducer } from 'src/store/reducer/product-add-remove-re
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot({
-      product: ProductAddRemoveReducer
+      product: ProductAddRemoveReducer,
     })
   ],
   providers: [AuthService,AuthGuard ],

@@ -13,9 +13,11 @@ export class ProductsComponent implements OnInit {
   constructor(private store: Store<{ items: []; cart: [] }>) { }
 
   ngOnInit() {
+    console.log('product',this.product)
   }
   inCart = false;
   @Input() product: ProductDetails;
+  @Input() qty: number;
 
   addToCart(item: ProductDetails) {
     this.store.dispatch(new AddToCart(item));
