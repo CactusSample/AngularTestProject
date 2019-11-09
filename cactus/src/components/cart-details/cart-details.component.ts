@@ -15,7 +15,7 @@ export class CartDetailsComponent implements OnInit {
   showSuccessMessage: boolean = false;
   hideRestData: boolean = true;
   
-  constructor(private store: Store<{ items: []; cart: [] }>, private router: Router) { }
+  constructor(private store: Store<{ product: { items: []; cart: [] } }>, private router: Router) { }
 
   ngOnInit() {
     this.store.pipe(select('product')).subscribe((data) => {

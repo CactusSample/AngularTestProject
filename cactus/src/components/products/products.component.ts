@@ -10,7 +10,7 @@ import { ProductActionTypes, AddToCart, RemoveFromCart } from '../../store/actio
 })
 export class ProductsComponent implements OnInit {
 
-  constructor(private store: Store<{ items: []; cart: [] }>) { }
+  constructor(private store: Store<{ product: { items: []; cart: [] } }>) { }
 
   ngOnInit() {
     console.log('product',this.product)

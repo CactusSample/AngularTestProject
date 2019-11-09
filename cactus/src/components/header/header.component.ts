@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
 
     
   cart: any;
-  constructor(public auth: AuthService, private store: Store<{ items: []; cart: [] }>) { }
+  constructor(public auth: AuthService, private store: Store<{ product: { items: []; cart: [] } }>) { }
 
   ngOnInit() {
     this.userDisplayName = localStorage.getItem('loggedUser');
