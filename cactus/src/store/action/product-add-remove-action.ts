@@ -22,7 +22,7 @@ export class AddToCart implements Action {
   export class RemoveFromCart implements Action {
     readonly type = ProductActionTypes.Remove;
   
-    constructor(public payload: ProductDetails) {}
+    constructor(public payload: ProductDetails,public qty:number) {}
   }
   
   export class LoadItems implements Action {

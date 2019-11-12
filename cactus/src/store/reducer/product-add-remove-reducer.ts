@@ -40,16 +40,33 @@ export function ProductAddRemoveReducer(state = initialState, action: ActionsUni
             }
 
         case ProductActionTypes.Remove:
+
+            let x = state.cart.findIndex(item => item.product.name === action.payload.name)
+            console.log('inside remove', action.qty);
+            if (action.qty > 1) {
+                return {
+                    ...state,
+                    cart: [
+                        ...state.cart.slice(0, x),
+                        {
+                            ...state.cart[x], qty: state.cart[x] ? state.cart[x].qty - 1 : 1
+                        },
+                        ...state.cart.slice(x + 1),
+                    ]
+                }
+            }
+            else {
+                return {
+                    ...state,
+                    cart: [...state.cart.filter(item => item.product.name !== action.payload.name)]
+                };
+            }
+
+        case ProductActionTypes.ClearCart:
             return {
                 ...state,
-                cart: [...state.cart.filter(item => item.name !== action.payload.name)]
-            };
-
-            case ProductActionTypes.ClearCart:
-                return{
-                    ...state,
-                    cart :[]
-                }
+                cart: []
+            }
 
         default:
             return state;

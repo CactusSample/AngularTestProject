@@ -13,8 +13,8 @@ export class ProductsComponent implements OnInit {
   constructor(private store: Store<{ product: { items: []; cart: [] } }>) { }
 
   ngOnInit() {
-    console.log('product',this.product)
   }
+
   inCart = false;
   @Input() product: ProductDetails;
   @Input() qty: number;
@@ -25,7 +25,7 @@ export class ProductsComponent implements OnInit {
   }
 
   removeFromCart(item: ProductDetails) {
-    this.store.dispatch(new RemoveFromCart(item));
+    this.store.dispatch(new RemoveFromCart(item, this.qty));
     this.inCart = false;
   }
 }

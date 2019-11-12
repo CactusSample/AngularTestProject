@@ -14,22 +14,26 @@ export class CartDetailsComponent implements OnInit {
   totalPrice = 0;
   showSuccessMessage: boolean = false;
   hideRestData: boolean = true;
+  showEmptyCartMessage: boolean = false;
   
   constructor(private store: Store<{ product: { items: []; cart: [] } }>, private router: Router) { }
 
   ngOnInit() {
     this.store.pipe(select('product')).subscribe((data) => {
-      console.log('data price', data.cart);
       this.calculateTotal(data.cart);
       this.cartDetails = data.cart;
     });
   }
 
   calculateTotal(data: any){
+    console.log('calculate total', data)
+    this.totalPrice = 0;
     data.forEach((item) => {
-      this.totalPrice = this.totalPrice + item.qty * item.product.price;
+      this.totalPrice = this.totalPrice + (item.qty * item.product.price);
     });
-    console.log('totalPrice', this.totalPrice)
+    if(this.totalPrice == 0){
+      this.displayEmptyCartMessage();
+    }
   }
 
   showModalConfirmation(){
@@ -38,11 +42,15 @@ export class CartDetailsComponent implements OnInit {
     this.clearCart();
   }
 
+  displayEmptyCartMessage(){
+    this.hideRestData = false;
+    this.showEmptyCartMessage = true;
+  }
+
   clearCart() {
     this.store.dispatch(new ClearCart());
     setTimeout(() => {
       this.router.navigate(["dashboard"]);
-
     }, 3000)
   }
  
