@@ -7,12 +7,18 @@ import { ProductDetails } from 'src/models/product-details';
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
-
+   sortByOption: string='';
   @Input() products: ProductDetails[] = [];
+  
 
   constructor() { }
 
   ngOnInit() {
+  }
+  onSort(event: any){
+    console.log(event.target.value);
+    this.sortByOption = event.target.value
+
   }
 
 }

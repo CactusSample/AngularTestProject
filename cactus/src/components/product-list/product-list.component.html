@@ -1,3 +1,9 @@
+<select (change)="onSort($event)">        
+  <option value="name|asc">Sort By Name (A to Z)</option>
+  <option value="name|desc">Sort By Name (Z to A)</option>
+  <option value="price|lth">Sort By Price (Low to High)</option>
+  <option value="price|htl">Sort By Price (High to Low)</option>
+</select>
 <div class="product-list">
-    <app-products *ngFor="let product of products" [product]="product"></app-products>
+    <app-products *ngFor="let product of products  | sortBy : sortByOption" [product]="product"></app-products>
   </div>

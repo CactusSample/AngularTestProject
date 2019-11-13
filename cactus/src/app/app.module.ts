@@ -17,7 +17,7 @@ import { AuthGuard } from '../auth/auth.guard';
 import { ProductAddRemoveReducer } from 'src/store/reducer/product-add-remove-reducer';
 import { CartDetailsComponent } from 'src/components/cart-details/cart-details.component';
 import { ProductEffect } from 'src/store/effect/product.effect';
-
+import { SortPipe } from '../pipes/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import { ProductEffect } from 'src/store/effect/product.effect';
     LoginComponent,
     ProductsComponent,
     ProductListComponent,
-    CartDetailsComponent
+    CartDetailsComponent,
+    SortPipe
   ],
   imports: [
     BrowserModule,
