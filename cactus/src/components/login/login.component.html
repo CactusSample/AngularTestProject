@@ -21,7 +21,7 @@
                             placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
                         <div *ngIf="submitted && f.password.errors " class="invalid-feedback">
                             <div *ngIf="f.password.errors.required">Please enter Password</div>
-                            <div *ngIf="f.password.errors.pattern">Password must be 6 characters with atleast one number,small letter</div>
+                            <div *ngIf="f.password.errors.pattern">Password of atleast 6 characters with one Capital,small letter</div>
                         </div>
                     </div>
                     <button type="submit"  class="btn btn-success btn-block submit-button submit"> SIGN IN </button>

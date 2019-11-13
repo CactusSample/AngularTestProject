@@ -6,11 +6,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SortPipe implements PipeTransform {
 
   transform(array: Array<string>, args: string): Array<string> {
-    console.log("hey",args);
     
     if (array !== undefined) {
       let sortField = args.split('|')
-      console.log('show',sortField[0]);
       
       if (sortField[0] == 'name' || sortField[0] == 'price'){
         array.sort((a: any, b: any) => {
